@@ -1,0 +1,16 @@
+<% content_for :title, "記事を編集する | CodeShelf" %>
+
+<section class="editor-shell">
+  <header class="editor-header">
+    <p class="eyebrow">UPDATE TRANSMISSION</p>
+    <h1>記事を編集する</h1>
+    <p>内容を更新し、より正確な技術情報として再発信します。</p>
+  </header>
+
+  <%= render "form", article: @article %>
+
+  <div class="editor-back">
+    <%= link_to "記事詳細へ戻る", @article %>
+    <%= link_to "一覧へ戻る", articles_path %>
+  </div>
+</section>

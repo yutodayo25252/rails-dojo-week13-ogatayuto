@@ -1,0 +1,27 @@
+<%= form_with(model: article) do |form| %>
+  <% if article.errors.any? %>
+    <div class="form-errors">
+      <h2>入力内容を確認してください</h2>
+
+      <ul>
+        <% article.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title, "タイトル" %>
+    <%= form.text_field :title, placeholder: "例: Rails の routes を読み解く", autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :body, "本文" %>
+    <%= form.textarea :body, placeholder: "学んだこと、つまずいた点、解決方法を書いてください。" %>
+  </div>
+
+  <div class="form-submit">
+    <%= form.submit article.persisted? ? "記事を更新する" : "記事を公開する", class: "button button-primary button-large" %>
+  </div>
+<% end %>

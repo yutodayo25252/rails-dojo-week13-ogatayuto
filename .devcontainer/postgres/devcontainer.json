@@ -1,0 +1,76 @@
+{
+  "name": "rails-dojo-git-practice-postgres",
+  "dockerComposeFile": "compose.yaml",
+  "service": "app",
+  "remoteUser": "vscode",
+  "workspaceFolder": "/home/vscode/app",
+  "shutdownAction": "stopCompose",
+  "waitFor": "updateContentCommand",
+  "onCreateCommand": "sudo apt-get update && sudo apt-get install -y libpq-dev postgresql-client && gem install irb -N && gem install solargraph -v '0.59.2' -N",
+  "updateContentCommand": "cd /home/vscode/app && bundle install",
+  "postAttachCommand": {
+    "Open terminal": "echo 'PostgreSQL検証環境の準備完了'"
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "GitHub.codespaces",
+        "Shopify.ruby-lsp",
+        "castwide.solargraph",
+        "vstirbu.vscode-mermaid-preview"
+      ],
+      "settings": {
+        "terminal.integrated.hideOnStartup": "never",
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "terminal.integrated.cwd": "/home/vscode/app",
+        "editor.tabSize": 2,
+        "editor.formatOnSave": false,
+        "editor.formatOnType": false,
+        "editor.insertSpaces": true,
+        "editor.renderWhitespace": "none",
+        "files.exclude": {
+          "**/.devcontainer": true,
+          "**/.git": true,
+          "**/.ruby-lsp": true
+        },
+        "[ruby]": {
+          "editor.semanticHighlighting.enabled": true
+        },
+        "files.associations": {
+          "*.erb": "erb"
+        },
+        "emmet.includeLanguages": {
+          "erb": "html"
+        },
+        "solargraph.useBundler": false,
+        "solargraph.diagnostics": false,
+        "solargraph.formatting": true,
+        "solargraph.autoformat": false,
+        "solargraph.definitions": true,
+        "solargraph.completion": true,
+        "solargraph.references": true,
+        "solargraph.symbols": true,
+        "solargraph.rename": true,
+        "solargraph.hover": true,
+        "rubyLsp.rubyVersionManager": {
+          "identifier": "none"
+        },
+        "rubyLsp.formatter": "none",
+        "rubyLsp.enabledFeatures": {
+          "diagnostics": false,
+          "formatting": false
+        }
+      }
+    }
+  },
+  "remoteEnv": {
+    "EDITOR": "code --wait"
+  },
+  "portsAttributes": {
+    "3000": {
+      "label": "Application",
+      "onAutoForward": "openPreview"
+    }
+  },
+  "forwardPorts": [3000]
+}
